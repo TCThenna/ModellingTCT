@@ -1,0 +1,360 @@
+
+Ich gehe von der Idee aus, dass das System gegen ein Quasi-Gleichgewicht (QGGW) strebt. 
+Inspiriert vom BM-Gleichgewicht, gehe ich davon aus, dass das QGGW durch ein konstantes Verhaeltnis von $n_1$ zu $n_0$ charakterisiert wird und bei Stoerung das QGGW verschoben ist. 
+Diese Idee hatte ich schon in meiner Dissertation geaeu3ert, wenn auch nicht sauber mathematisch ausformuliert. 
+Die Idee selbst greifen Sie auch in Ihrem Dokument auf, und argumentieren, dass dies fuer kleine Stoerungen der Fall sei (section 4.3.2 High-temperature case). 
+Fuer diese Limitierung sehe ich keinen Grund. 
+Ich gehe also einen Schritt weiter und sage: 
+Sobald es in einem System von zwei Niveaus mindestens eine Zeitkonste ``schnell'' ist, also schneller als die experimentelle Aufloesung, 
+ dann befindet sich das System hinreichend schnell in einem QGGW-Zustand. 
+Denn die Stoerungen durch Drift koennen zwar gro3 sein (schnell), aber sie sind zeitlich konstant ($\taudrift, \taurec$ sind keine Funktion der Zeit),
+ und somit stellt sich ein QGGW mit der schnellsten Zeitkonstante ein.
+ 
+Beispiel bei 500\,V, 100\,K:
+$\taudrift$ ist bei 500V klein ($\approx$50\,ps), $\tauevap$ ist ca 14\,ns, $\taurec$ ca 14\,ns, $\taub$ ist anfangs immer schnell, da die Dichte anfangs hoch ist.
+Also wird $n_1$ schnell durch $\taub$ oder ``$\taudrift$ und $\taub$'' entleert. 
+$n_0$ fuellt sich also schnell, aendert sich aber nicht stark da $\taurec$ und $\tauevap$ langsam sind. 
+Es stellt sich ein QGGW ein, wo das Verhaeltnis $n_1/n_0$ entsprechend klein ist, da $\taudrift$ viel schnell ist als $\taurec$.
+Falls nun $\tauevap$ auch schnell sein sollte, verschiebt sich nur das QGGW, aber es wird weiterhin schnell erreicht. 
+So kann man nun beliebige Kombinationen durchspielen.
+Solange mindestens eine Zeitkonstante schnell ist, strebt das System meiner Meinung nach hinreichend schnell gegen einen QGGW-Zustand, da fuer das schnelle Erreichen dieses Zustandes, 
+ sich nur eine Niveau schnell aendern muss. 
+ 
+Man gehe von Ihrem DGL-System aus
+
+\begin{align}
+\frac{\dd n_0}{\dd t} &= -\frac{n_0}{\tauzero} + \frac{n_1}{\taub} \qquad \textrm{with}    \qquad\frac{1}{\tauzero}= \frac{1}{\tauevap} + \frac{1}{\taurec} \\
+ \frac{\dd n_1}{\dd t} &= +\frac{n_0}{\tauevap} - \frac{n_1}{\tauone}  \qquad \textrm{with} \qquad\frac{1}{\tauone} = \frac{1}{\taub} + \frac{1}{\taudrift} 
+ \label{math:diff22}
+\end{align}
+
+\noindent
+Au3erdem beachte man, dass $\taub = \frac{1}{\sigma v n_1}$. 
+Dieses $n_1$ kann nur die Dichte der freien Loecher sein, mit denen ein freies Elektron ein Exciton bilden kann. 
+Das beudetet aber, dass $\taub$ per se nicht zeitlich konstant ist, sonder anfangs schnell (es gibt noch viele freie Loecher, Dichte 1e18 / cm3), und spaeter unter Umstaenden viel langsamer (bei Dichte 1e15 1/cm3), 
+ mit entsprechenden Konsequenzen fuer das Modell. 
+%Man beachte, es gibt nicht ein $\taub$ und ein anderes $t_0$, sondern nur $\taub$ wie oben geschrieben. 
+Zusaetzlich muss auch $\tauevap$ ueberdacht werden. 
+In Ihrem Dokument zur Vorbereitung der Publikation ist $\tauevap = t_0 *\exp(...)$, mit $t_0 = \frac{1}{\sigma v n_1}$, wobei $n = n_1 = $ ca 1e18 angenommen wurde. 
+Ich halte dagegen, dass $n$ hier nicht die Dichte der freien Elektron/Loecher sein kann, sondern die Zustandsdichte im Leitungs-/Valenzband sein muss,
+ denn wenn ein Exciton thermisch ionisiert, muessen genau dort die Ladungen einen Platz finden. 
+Es gilt also nicht $\tauevap = \taub*\exppEx$. 
+Ich behaupte also $\tauevap = \frac{1}{\sigma v N_V} \exppEx \equiv t_{e,0}\exppEx$, welches nachher ueberprueft werden soll, siehe weiter unten. 
+
+ANNAHME:\\
+Ein Quasi-GGW wird schnell, innerhalb der experimentellen Zeitaufloesung (ca 360\,ps), erreicht. 
+Man denke an $\taudrift$ im Bereich von 50\,ps, welches das QGGW schnell herstellt. 
+In diesem QGGW ist nicht etwa $\dd n / \dd t = 0$, sondern das Verhaeltnis $n_1/n_0$ ist konstant.
+Damit folgt
+
+\begin{equation}
+ \frac{\dd}{\dd t} \left( \frac{n_1}{n_0}\right) = 0 \Rightarrow  \frac{n_1}{n_0} = f \quad \textrm{oder} \quad n_1 = f\cdot n_0,\,\,f>0.
+ \label{eq:f}
+\end{equation}
+
+\noindent
+Setzt man eq.~(\ref{eq:f}) in eq.~(37) ein, erhaelt man:
+
+\begin{equation}
+ \frac{\dd n_0}{\dd t} =  -\frac{n_0}{\tauzero} + f\cdot \frac{n_0}{\taub} \equiv -\frac{n_0}{\tauzeroprime}, \qquad \frac{1}{\tauzeroprime} = \frac{1}{\tauzero} - \frac{f}{\taub}.
+\end{equation}
+\noindent
+Es folgt:
+
+\begin{equation}
+ n_0 = n_0 (0) \exp(-t / \tauzeroprime).
+ \label{eq:n0}
+\end{equation}
+\noindent
+$n_1(t)$ folgt direkt aus aus eq. (39). 
+Benutze (38) zur Bestimmung von $f$ (ohne weitere Annahmen):
+
+\begin{equation}
+ \frac{\dd n_1}{\dd t} = f \frac{\dd n_0}{\dd t} \stackrel{!}{=} \frac{n_0}{\tauevap} - \frac{n_1}{\tauone}
+\end{equation}
+\noindent
+Nach Einsetzen von eq.(41), Ableiten und Aufloesen nach $f$ folgt:
+
+\begin{equation}
+ \boxed{\frac{f^2}{\taub} - \frac{f}{\tauzero} = \frac{1}{\tauevap} - f \left( \frac{1}{\taub} + \frac{1}{\taudrift} \right)}.
+ \label{eq:solvef}
+\end{equation}
+\noindent
+Die einzige Annahme war, dass das System gegen ein Q-GGW strebt bei dem das Verhaeltnis der Dichten zeitlich konstant ist,
+ und dieses Q-GGW innerhalb der experimentellen Aufloesung erreicht wird. 
+Es musste keine Annahmen ueber die Groe3en der Zeitkonstanten oder Dichten getroffen werden. 
+Eq.~(\ref{eq:solvef}) kann und wird nun fuer verschiedene Faelle ausgewertet. 
+
+\subsection{Ohne Stoerung}
+
+Ohne Stoerung ($\taudrift,\taurec \rightarrow \infty$) folgt aus Eq. (\ref{eq:solvef}):
+
+\begin{equation}
+ \frac{f^2}{\taub} + f\left( \frac{1}{\taub} - \frac{1}{\tauevap} \right) = \frac{1}{\tauevap} 
+\end{equation}
+
+Loesungen von eq (44) sind $f = -1$ (unphysikalisch) und $f = \frac{\taub}{\tauevap}$ (!), wie man schnell zeigen kann. Es folgt also im Fall ohne Stoerung:
+
+\begin{equation}
+ \frac{n_1}{n_0} = f = \frac{\taub}{\tauevap} = c \cdot \expmEx, \,\,\,\textrm{mit}\,\,\, c = \frac{N_V}{n_1}.
+\end{equation}
+
+\noindent
+Das ist genau der BM-Faktor mit dem Verhaeltnis der Zustandsdichten $c$. 
+N.B.: Je nachdem wie gro3 $N_V$ ist, kann $f$ sogar auch $>1$ sein.
+In der Literatur finde ich fuer Diamant $N_V \approx 1e19$\,cm-3.
+
+\subsection{Mit gleicher Stoerung}
+Fuer Stoerungen gleicher Groe3e, $\taudrift = \taurec$, reduziert sich Eq. (\ref{eq:solvef}) wie im Fall ohne Stoerung.
+
+\begin{equation}
+ \frac{f^2}{\taub} + f\left( \frac{1}{\taub} - \frac{1}{\tauevap} \right) = \frac{1}{\tauevap} \Rightarrow f = \frac{\taub}{\tauevap}. 
+\end{equation}
+
+\noindent
+Es folgt wieder das QGGW mit BM-Faktor. 
+
+\subsection{Allgemeine Loesung}
+Die allgemeine Loesung lautet (ich schreibe nun erst $\tauzero$ aus):
+
+\begin{equation}
+  \frac{f^2}{\taub} + f \left( \frac{1}{\taub} + \frac{1}{\taudrift} - \frac{1}{\tauevap} -\frac{1}{\taurec} \right) = \frac{1}{\tauevap}.
+ \label{eq:solvefallgemein}
+\end{equation}
+
+\noindent
+Ich vereinfache zu $\frac{f^2}{\taub} + \frac{f}{\tauoneprime} = \frac{1}{\tauevap}$ mit $\frac{1}{\tauzeroprime} = \frac{1}{\taub} + \frac{1}{\taudrift} - \frac{1}{\tauevap} -\frac{1}{\taurec} $ und den Loesungen:
+
+\begin{equation}
+ f_{1/2} = \pm \sqrt{\frac{\taub}{\tauevap} + \left( \frac{\taub}{2\tauoneprime}\right)^2 } - \frac{\taub}{2\tauoneprime}. 
+\end{equation}
+
+\noindent
+$f_2$ (negative Loesung) ist wieder unphysikalisch. 
+Leider laesst sich mit $f_1$ aber nicht gut arbeiten, da ja die gemessene Zeitkostante $\frac{1}{\tauzeroprime} = \frac{1}{\tauzero} - \frac{f}{\taub}$ ist, und $f_1$ zu sperrig ist. 
+
+
+\subsection{Allgemeine Loesung fuer kleine Stoerungen}
+\noindent
+Die Wurzel in (48) laesst sich analytisch nicht aufloesen. 
+Fuer kleine Stoerungen im Vergleich zum BM-Verhaeltnis ersetze ich $f = \frac{\taub}{\tauevap}(1 + \delta)$. 
+Eingesetzt in (47) und ich vernachlaessige nur den $\delta^2$-Term. 
+Die allgemeine Loesungen lautet dann 
+\begin{equation}
+ f = \frac{\taub}{\tauevap}(1 + \delta)\,\,\,\textrm{mit} \,\,\, \delta = \frac{\frac{1}{\taurec} - \frac{1}{\taudrift}}{\frac{1}{\tauevap} + \frac{1}{\taub} + \frac{1}{\taudrift} - \frac{1}{\taurec}}. 
+\end{equation}
+
+\noindent
+Fuer den fall ohne (gleicher Stoerung) erhaelt man $\delta = 0$ und somit das BM-Verhaeltnis. 
+Mit Stoerung spiegelt der Zaehler das Vorzeichen der Veraenderung wider: 
+Wenn der Drift schneller ist als die Rekombination, ist $\delta$ negativ, und $f$ verschiebt sich zu kleiner Werten, wie man es auch erwarten wuerde.
+Wenn die Rekombination schneller ist als der Drift, ist $\delta$ positiv, und $f$ verschiebt sich zu groe3eren Werten.
+Die gemessene Zeitkonstante ist dann $\frac{1}{\tauzeroprime} = \frac{1}{\tauzero} - \frac{f}{\taub} = \frac{1}{\taurec} - \frac{\delta}{\tauevap}$.
+
+\subsection{Vereinfachte allgemeine Loesung beliebiger Stoerung}
+Nun ist die Frage, wie gro3 $f$ in unserem Experiment ist, also mit $\taudrift$ im Bereich (grob) 50 bis 1000\,ps und $\taurec$ ca 10\,ns. 
+Das haengt natuerlich von $\taub$ ab, welches aber wiederum von $n_1$ abhaengt.
+Nimmt man also $\taub = \frac{1}{\sigma v n_1}$ an, muesste das DGL-System eigentlich so lauten:
+
+\begin{align}
+ \frac{\dd n_0}{\dd t}  &= -\frac{n_0}{\tauzero} + \sigma v n_1^2  \qquad \textrm{mit}    \qquad\frac{1}{\tauzero}= \frac{1}{\tauevap} + \frac{1}{\taurec} \\
+ \frac{\dd n_1}{\dd t}  &= +\frac{n_0}{\tauevap} - \sigma v n_1^2 - \frac{n_1}{\taudrift}
+ \label{math:diff33} 
+\end{align}
+
+
+
+\noindent
+Nun habe ich fuer diese quadratische System keine Loesung parat, deswegen hier eher vollstaendigkeits-halber angegeben. 
+Aber z.B.\ bei kalten Temperaturen ($\tauevap$ gro3) und ohne Drift ($\taudrift \rightarrow \infty$) reduziert sich (51) zu:
+
+\begin{equation}
+ \frac{\dd n_1}{\dd t} = - \sigma v n_1^2.
+\end{equation}
+
+\noindent
+Dann ist eine Loesung:
+
+\begin{equation}
+ n_1 = \frac{1}{\sigma v t + 1/n_1(0)},
+\end{equation}
+
+\noindent
+und entsprechend nimmt $n_1$ anfangs sehr schnell ab (in 180\,ps auf ca 1.6e16 1/cm3). 
+Danach sollte (dann mit Drift), die Aenderung durch den Drift dominant werden, und $n_1$ nimmt exponentiell mit $\taudrift$ ab, wie gesagt, die Ueberlegung gilt fuer gro3e $\tauevap$. 
+Nach $3*\taudrift$ ist $n_1$ ca 8e14 1/cm3, und $\boxed{\taub = \SI{3}{\nano\second}}$!
+
+Diese Ueberlegung soll verdeutlichen, dass $\taub$ eigentlich zeitabhaengig ist, und wie diese Abhaenigkeit ungefaehr aussieht. 
+Was waere der Wert von $f$ fuer solch einen Fall, wenn also $\taub \approx \SI{3}{\nano\second}$ und sagen wir $T = \SI{100}{\kelvin}$:
+
+\begin{align}
+  \frac{f^2}{\taub} + f \left( \frac{1}{\taub} + \frac{1}{\taudrift} - \frac{1}{\tauevap} -\frac{1}{\taurec} \right) &= \frac{1}{\tauevap}\\
+  \Rightarrow
+  \frac{f^2}{3} + f \left( \frac{1}{3} + \frac{1}{0.06} - \frac{1}{14} -\frac{1}{14} \right) &= \frac{1}{14}\\
+  \Rightarrow 
+  f &= 4.3e-3.
+\end{align}
+
+\noindent
+Der Zahlenwert ist nicht von Bedeutung, aber das Faktum, dass $f$ klein ist. 
+Eine aehnliche Rechnung fuer T = 150\,K kommt auf $f \approx 0.2$.
+
+Starten wir nun mit der Ausgangsgleichung von $f$:
+\begin{equation*}
+ \frac{f^2}{\taub} - \frac{f}{\tauzero} = \frac{1}{\tauevap} - f \left( \frac{1}{\taub} + \frac{1}{\taudrift} \right).
+\end{equation*}
+
+\noindent
+Wenn $f$ klein ist, und $\taub \approx \SI{3}{\ns}$ ist $\frac{f^2}{\taub} \ll \frac{f}{\tauzero}$, und $\taub \gg \taudrift$ und eben nicht kleiner! %siehe dazu auch Anmerkung A??). 
+Somit vereinfacht sich die Gleichung zu:
+
+\begin{equation}
+  f \left( \frac{1}{\tauevap} + \frac{1}{\taurec} \right)= -\frac{1}{\tauevap} + \frac{f}{\taudrift}
+\end{equation}
+
+\noindent
+und man erhaelt
+
+\begin{equation}
+ \boxed{ f = \frac{\frac{1}{\tauevap}}{\frac{1}{\taudrift} - \frac{1}{\tauevap} - \frac{1}{\taurec}} }. 
+\end{equation}
+
+\subsubsection{Fuer $\taudrift \ll \tauevap$}
+Wenn nun $\taudrift \ll \tauevap$ (bis ca.\ $T < 150$\,K: $\tauevap \approx \SI{400}{\ps}$ bei 150\,K und $\taudrift$ bei 500 V ca 50\,ps), gilt 
+\begin{equation}
+ \boxed{f = \frac{\taudrift}{\tauevap}}\,\,\, \textrm{und } \,\,\, \boxed{\frac{1}{\tauzeroprime} = \frac{1}{\tauzero} - \frac{f}{\taub} \approx \frac{1}{\tauzero} = \frac{1}{\tauevap} + \frac{1}{\taurec}}, 
+\end{equation}
+wie ``erhofft'', da damit $n_1$ in bekannter Form auftaucht:
+
+\begin{equation}
+ n_1 = \frac{\taudrift}{\tauevap} n_0(0) \exp{(-t / \tauzero)}. 
+\end{equation}
+
+\noindent
+und $\ndrift$, mittels $\frac{\dd \ndrift}{\dd t} = + \frac{n_1}{\taudrift}$:
+
+\begin{equation}
+ \ndrift = \frac{\tauzero}{\tauevap} n_0(0) (1 - \exp{(-t / \tauzero)}).
+\end{equation}
+
+\noindent
+Der Faktor $\frac{\tauzero}{\tauevap}$ kann wie immer umgeschrieben werden in $\frac{1}{1 + \tauevap/\taurec} = \frac{1}{1 + t_{e,0}\exppEx/\taurec}$.
+Das ist genau der Faktor, den ich auch benutzt habe, um die Fits an $Q=Q(T)$ durchzufuehren. 
+Zur Erinnerung, hier ist $t_{e,0} = \frac{1}{\sigma v N_V}$. 
+Experimentell wurde bei T = 100\,K $\tauevap = \SI{14}{\ns}$ bestimmt. 
+Nimmt man nun den spannungsabhaenigen Wert $\Ea(\SI{500}{\volt}) = \SI{0.09}{\eV}$ an, ist $t_{e,0} = \SI{0.3}{\ps}$, und mit Ihren Werten fuer $\sigma$ und der thermischen Geschwindigkeit erhaelte ich
+$\boxed{N_V = \SI{1.4e19}{\centi\meter^{-3}}}$, in passabler Uebereinstimmung mit Literaturwerten. 
+Fuer die innere Ladung finde ich:
+
+\begin{equation}
+ \Qin \propto n_1(0) t' + n_0(0) \frac{\tauzero}{\tauevap}\cdot \left[ t' - \tauzero(1-\exp{(-t'/\tauzero)} \right]
+\end{equation}
+
+\noindent
+oder wenn bis $t\rightarrow \infty$ integriert wird:
+\begin{equation}
+ \Qin \propto n_1(0) t' + n_0(0) \frac{\tauzero}{\tauevap}\cdot \left[ t' \right]
+\end{equation}
+
+\noindent
+Mit Faktoren
+\begin{equation}
+ \Qin = Q_1(0) + Q_0(0) \frac{\tauzero}{\tauevap}
+\end{equation}
+
+\noindent
+Gesamtladung (inklusive $\Qo$) bis unendlich:
+\begin{equation}
+ \Qtot = \Qo(0) + Q_1(0) + Q_0(0) \frac{\tauzero}{\tauevap}
+\end{equation}
+
+\noindent
+Wenn man nun annimmt, dass $Q_1(0)$ vernachlaessigbar ist und $Q_0(0) \approx \Qin$, folgt, wie frueher:
+
+\begin{equation}
+ \boxed{\Qtot = \Qo(0) + \Qin \frac{\tauzero}{\tauevap}}.
+\end{equation}
+
+\noindent
+Bei 100\,K ist der Fehler im Promillbereich oder weniger, bei 150\,K macht man einen Fehler von ca 15\,\%, da $f(\SI{150}{\kelvin}) \approx 0.2$. 
+Nimmt man die Veraenderung von $Q_1(0)$ als Funktion der Temperatur mit, ergibt sich mit $f = n_1/n_0 = Q_1 / Q_0$ und entsprechend $Q_1 = \frac{f}{1+f}\Qin$ und $Q_0 = \frac{1}{1+f}\Qin$:
+
+\begin{equation}
+ \Qtot = \Qo(0) + \Qin\cdot \left( \frac{f}{1+f} + \frac{\tauzero}{\tauevap}\frac{1}{1+f}\right) 
+ \stackrel{f = \frac{\taudrift}{\tauevap}}{=} 
+ \Qo(0) + \Qin\cdot \left( \frac{1}{1+ \tauevap/\taudrift} + \frac{\tauzero}{\tauevap} \frac{1}{1 + \taudrift/\tauevap}\right).
+\end{equation}
+
+\noindent
+Bei Integration nur bis $t'$ kommt der Term $-\tauzero(1-\exp(-t'/\tauzero)$ hinzu:
+\begin{equation}
+ \Qin = Q_1(0) + Q_0(0) \frac{\tauzero}{\tauevap}\left[ 1 - \frac{\tauzero}{t'}(1 - \exp(-t'/\tauzero)) \right]
+\end{equation}
+
+\noindent
+Gesamtladung:
+\begin{equation}
+ \Qtot = \Qo(0) + Q_1(0) + Q_0(0) \frac{\tauzero}{\tauevap}\left[ 1 - \frac{\tauzero}{t'}(1 - \exp(-t'/\tauzero)) \right]
+\end{equation}
+
+\noindent
+Wenn man nun wieder annimmt, dass $Q_1(0)$ vernachlaessigbar ist und $Q_0(0) \approx \Qin$, folgt
+\begin{equation}
+ \boxed{\Qtot = \Qo(0) +  \Qin(0) \frac{\tauzero}{\tauevap}\left[ 1 - \frac{\tauzero}{t'}(1 - \exp(-t'/\tauzero)) \right]}.
+\end{equation}
+
+\noindent
+Ohne diese Vereinfachung:
+\begin{equation}
+ \Qtot = \Qo(0) +  \Qin(0) \cdot \left( \frac{1}{1+ \tauevap/\taudrift} + \frac{\tauzero}{\tauevap} \frac{1}{1 + \taudrift/\tauevap}\right) \cdot 
+ \frac{\tauzero}{\tauevap} \left[ 1 - \frac{\tauzero}{t'}(1 - \exp(-t'/\tauzero)) \right].
+\end{equation}
+
+\subsubsection{Fuer $\taudrift \lesssim \tauevap$}
+Wenn nun $\taudrift$ nicht $\ll \tauevap$, aber weiterhin $\taudrift < \tauevap$ und nur $\taurec$ vernachlaessigt wird, erhalte ich 
+\begin{equation}
+  \boxed{f = \frac{\taudrift}{\tauevap - \taudrift}} \,\,\,\textrm{und } \,\,\, \boxed{\frac{1}{\tauzeroprime} = \frac{1}{\tauzero} - \frac{f}{\taub} \approx \frac{1}{\tauevap} + \frac{1}{\taurec}}
+\end{equation}
+\noindent
+Vernachlaessigt man $\frac{f}{\taub}$ macht man bei 100 K einen Fehler im Promillbereich, bei 150\,K wieder ca 10\,\%.
+Dann lauten $n_1$ und $\ndrift$:
+
+\begin{equation}
+ n_1 = \frac{\taudrift}{\tauevap - \taudrift} n_0(0) \exp{(-t / \tauzero)}. 
+\end{equation}
+
+\noindent
+und $\ndrift$, wieder mittels $\frac{\dd \ndrift}{\dd t} = + \frac{n_1}{\taudrift}$:
+
+\begin{equation}
+ \ndrift = \frac{\tauzero}{\tauevap - \taudrift} n_0(0) (1 - \exp{(-t / \tauzero)}). 
+\end{equation}
+
+\noindent
+Zur Diskussion 7.5.1 aendert sich also nur der Faktor $\tauzero / \tauevap$ zu $\tauzero / (\tauevap - \taudrift)$. 
+
+\subsection{Fuer $\tauevap \approx \taudrift$ und $\tauevap < \taudrift$}
+Dafuer suche ich noch entsprechende Loesungen fuer $f$. 
+So sollte $Q=Q(E)$ bei fester Temperatur am besten direkt aus $f$ folgen. 
+
+\subsection{Resuemee}
+Das DGL-System wird allgemein geloest mit der Annahme, dass das System hinreichend schnell gegen ein Gleichgewicht mit konstanten Verhaeltnis $n_1/n_0$ tendiert. 
+Au3erdem wird angenommen, dass sich $\taub$ anfangs sehr schnell aendert, und dann gegen einen ungefaehr konstanten Wert strebt und somit nicht zeitabhaengig ist. 
+(Diese Annahme wird von Ihnen auch implizit getaetigt). 
+Es muessen insbesondere a priori keine Annahmen ueber die relative Groe3en von Zeitkonstanten und Dichten getroffen werden, um das DGL-System zu loesen. 
+
+Es gibt eine Gleichung fuer $f$, die fuer verschiedene Faelle ausgewertet wird, und nicht verschiedene DGL-Systeme die jeweils neu geloest werden muessten. 
+Der Faktor $f$ stellt sich den Stoerungen entsprechend ein. 
+Ohne Stoerung und bei hypothetischer gleicher Stoerung ($\taudrift = \taurec$) ergibt sich wie erwartet das BM-QGGW. 
+Kleine Aenderungen ($\delta$) ergeben sinnvolle Loesungen. 
+Im Experiment sind die Stoerungen oft gro3, da $\taudrift$ klein, dadurch ist $f$ fuer $T < $ 150\,K klein, und EQ (43) wurde entsprechend vereinfacht und die Loesungen diskutiert. 
+Es folgt im einfachsten Fall EQ (60) und (67). 
+
+Im Prinzip muesste ein quadratisches DGL-System geloest werden. 
+Da dann aber die Zeitabhaengigkeit von $\taub$ fest im System steckt, kann $n_1/n_0 = f = $ konstant nicht mehr angenommen werden. 
+Fuer dieses DGL-System habe ich noch keinen Loesungsansatz parat. 
+
+
+
+
+

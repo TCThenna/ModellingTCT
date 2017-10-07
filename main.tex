@@ -1,0 +1,460 @@
+
+%\pdfoutput=1 % only if pdf/png/jpg images are used
+%\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,10pt]{scrartcl}
+%\documentclass[smallcondensed,referee]{svjour3}
+\usepackage{geometry}
+\geometry{a4paper,left=25mm,right=25mm, top=24mm, bottom=32mm}
+%\geometry{a4paper}
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000 
+\usepackage{graphics}  
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage[amssymb]{SIunits}
+\usepackage[load-configurations=abbreviations,tight-spacing=true,separate-uncertainty,bracket-numbers = false]{siunitx} % JINST cannnot handle siunitx !!
+\usepackage{nicefrac}
+\usepackage[english]{babel}
+\usepackage{lineno}
+%linenumbers
+\setpagewiselinenumbers
+\modulolinenumbers[5]
+%\setlength\columnsep{25pt}
+\usepackage{epstopdf}
+\usepackage{stfloats}
+%\usepackage{upgreek}
+\usepackage{verbatim}
+\usepackage{url}
+\usepackage{xcolor}
+%\usepackage{draftwatermark}
+%\SetWatermarkScale{5}
+\usepackage{setspace}
+\usepackage{multicol,caption}
+\usepackage{booktabs}
+%\usepackage{ulem}
+
+%charges
+\newcommand{\q}{\ensuremath{\mathnormal{q}}}
+\newcommand{\e}{\ensuremath{\mathnormal{e}}}
+\newcommand{\h}{\ensuremath{\mathnormal{h}}}
+\newcommand{\Qo}{Q_{\textrm{out}}}
+\newcommand{\Qin}{Q_{\textrm{in}}}
+\newcommand{\Qtot}{Q_{\textrm{tot}}}
+\newcommand{\qo}{q_{\textrm{out}}}
+\newcommand{\qin}{q_{\textrm{in}}}
+\newcommand{\qtot}{q_{\textrm{tot}}}
+\newcommand{\Vo}{V_{\textrm{out}}}
+\newcommand{\Vin}{V_{\textrm{in}}}
+\newcommand{\Vtot}{V_{\textrm{tot}}}
+
+%TCT
+\newcommand{\aITC}{\ensuremath{\alpha}\textrm{-TCT}}
+\newcommand{\bITC}{\ensuremath{\beta}\textrm{-TCT}}
+\newcommand{\mipITC}{\textrm{MIP-TCT}}
+\newcommand{\drift}{{\textrm{drift}}}
+\newcommand{\plasma}{{\textrm{plasma}}}
+\newcommand{\p}{{\textrm{p}}}
+\newcommand{\phonon}{{\textrm{phon}}}
+\newcommand{\cph}{c_{\phonon}}
+
+\newcommand{\dpen}{\delta_{\textrm{p}}}
+\newcommand{\lir}{l_{\textrm{ir}}}
+
+%times
+\newcommand{\ttr}{\mathnormal{t'}}
+\newcommand{\tdt}{\mathnormal{\tau}_{\textrm{dt}}}
+\newcommand{\taup}{\mathnormal{\tau}_{\textrm{p}}}
+\newcommand{\tp}{\mathnormal{t}_{\textrm{p}}}
+\newcommand{\trap}{\textrm{trap}}
+\newcommand{\tautr}{\mathnormal{\tau}_{\trap}}
+\newcommand{\ttd}{\mathnormal{\tau}_{\trap}^{\drift}}
+\newcommand{\tlife}{\tau_\textrm{life}}
+\newcommand{\tfree}{\tau_\textrm{free}}
+\newcommand{\tth}{\tau_\textrm{th}}
+\newcommand{\trecgamma}{\tau_\textrm{rec}^{\gamma}}
+\newcommand{\ttrans}{\tau_\textrm{trans}}
+\newcommand{\trel}{\tau_\textrm{rel}}
+\newcommand{\tR}{\tau_\textrm{R}}
+\newcommand{\tRe}{\tau_{\textrm{R},\e}}
+\newcommand{\tRh}{\tau_{\textrm{R},\h}}
+\newcommand{\tcool}{\mathnormal{\tau}_{\textrm{cool}}}
+
+\newcommand{\tauzero}{\tau_{0}}
+\newcommand{\tauzeroprime}{\tau_{0}^{\prime}}
+\newcommand{\tauoneprime}{\tau_{1}^{\prime}}
+\newcommand{\tauone}{\tau_{1}}
+\newcommand{\taub}{\tau_{\textrm{b}}}
+\newcommand{\taudrift}{\tau_{\textrm{d}}}
+\newcommand{\tauevap}{\tau_\textrm{e}}
+\newcommand{\taurec}{\tau_\textrm{r}}
+\newcommand{\taurelax}{\tau_\textrm{relax}}
+\newcommand{\tauscat}{\tau_\textrm{scat}}
+
+%velocities
+\newcommand{\vth}{\mathnormal{v}_{\textrm{th}}}
+\newcommand{\vsat}{v_{\textrm{sat}}}
+\newcommand{\vsate}{v_{\textrm{sat}}^{\e}}
+\newcommand{\vsath}{v_{\textrm{sat}}^{\h}}
+\newcommand{\vdrift}{v_{\textrm{drift}}}
+\newcommand{\vdrifte}{v_{\textrm{drift}}^{\e}}
+\newcommand{\vdrifth}{v_{\textrm{drift}}^{\h}}
+\newcommand{\vrel}{v_{\textrm{rel}}}
+
+\newcommand{\vrelax}{v_\textrm{relax}}
+\newcommand{\vt}{v_{\textrm{t}}}
+\newcommand{\vl}{v_{\textrm{l}}}
+
+%mobilities
+\newcommand{\muaps}{\mu_{\textrm{APS}}}
+\newcommand{\muiis}{\mu_{\textrm{IIS}}}
+\newcommand{\munis}{\mu_{\textrm{NIS}}}
+
+\DeclareMathOperator{\Erf}{{\textrm{Erf}}}
+\DeclareMathOperator{\Erfc}{{\textrm{Erfc}}}
+
+\newcommand{\kB}{k_{\textrm{B}}}
+
+%energies
+\newcommand{\Ex}{E_{\textrm{x}}}
+\newcommand{\Exsi}{E_{\textrm{x}}^{\textrm{Si}}}
+\newcommand{\Ec}{E_{\textrm{C}}}
+\newcommand{\Ea}{E_{\textrm{a}}}
+\newcommand{\EA}{E_{\textrm{A}}}
+\newcommand{\ED}{E_{\textrm{D}}}
+\newcommand{\Ei}{E_{\textrm{i}}}
+\newcommand{\Ev}{E_{\textrm{V}}}
+\newcommand{\Eg}{E_{\textrm{g}}}
+\newcommand{\Etot}{E_{\textrm{tot}}}
+\newcommand{\Uel}{U_{\textrm{el}}}
+\newcommand{\Tnuc}{T_{\textrm{nuc}}}
+\newcommand{\Eopt}{E_{\textrm{opt}}}
+\newcommand{\EF}{E_{\textrm{F}}}
+\newcommand{\EFe}{E_{\textrm{F}}^\e}
+\newcommand{\EFh}{E_{\textrm{F}}^\h}
+\newcommand{\Epair}{E_{\textrm{pair}}}
+\newcommand{\Ephon}{E_{\textrm{ph}}}
+
+%densities
+\newcommand{\ndosv}{\mathnormal{n}_{\textrm{dos,v}}}
+\newcommand{\ndosc}{\mathnormal{n}_{\textrm{dos,c}}}
+\newcommand{\No}{N_{\textrm{out}}}
+\newcommand{\Nin}{N_{\textrm{in}}}
+\newcommand{\Ntot}{N_{\textrm{tot}}}
+\newcommand{\no}{n_{\textrm{out}}}
+\newcommand{\nexit}{n_{\textrm{exit}}}
+\newcommand{\nin}{n_{\textrm{in}}}
+\newcommand{\ntot}{n_{\textrm{tot}}}
+\newcommand{\nee}{n_{\e}}
+\newcommand{\nh}{n_{\h}}
+\newcommand{\Nphon}{N_{\textrm{ph}}}
+
+\newcommand{\ndrift}{n_{\drift}}
+\newcommand{\nt}{n_{\textrm{t}}}
+\newcommand{\nl}{n_{\textrm{l}}}
+
+%boltzmans
+\newcommand{\expmEx}{\exp{\left(-\Ex/\kB T \right)}}
+\newcommand{\exppEx}{\exp{\left( \Ex/\kB T \right)}}
+\newcommand{\expmEa}{\exp{\left(-\Ea/\kB T \right)}}
+\newcommand{\exppEa}{\exp{\left( \Ea/\kB T \right)}}
+\newcommand{\expm}{\exp{\left(-\Delta/\kB T \right)}}
+\newcommand{\expp}{\exp{\left( \Delta/\kB T \right)}}
+
+%misc
+\newcommand{\dd}{\mathrm d}
+\newcommand{\lD}{\lambda_{\textrm{Debye}}}
+\newcommand{\bias}{\textrm{bias}}
+\newcommand{\X}{\textrm{x}}
+\newcommand{\rrec}{r_\textrm{rec}}
+\newcommand{\nE}{E\!\!\!\!/}
+\newcommand{\pro}{\mathnormal{p}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\vk}{\vect{k}}
+\newcommand{\vr}{\vect{r}}
+\newcommand{\vph}{v_{\textrm{ph}}}
+\newcommand{\vpht}{v_{\textrm{ph,t}}}
+\newcommand{\vphl}{v_{\textrm{ph,l}}}
+
+%masses
+\newcommand{\mstar}{m^{*}}
+\newcommand{\mestar}{m^{*}_{\e}}
+\newcommand{\mhstar}{m^{*}_{\h}}
+\newcommand{\melstar}{m^{*}_{\e,\textrm{l}}}
+\newcommand{\metstar}{m^{*}_{\e,\textrm{t}}}
+\newcommand{\mhh}{m_{\h,\textrm{h}}}
+\newcommand{\mhl}{m_{\h,\textrm{l}}}
+\newcommand{\ml}{m_{\e,\textrm{l}}}
+\newcommand{\mt}{m_{\e,\textrm{t}}}
+\newcommand{\mdose}{m_{\textrm{dos},\e}}
+\newcommand{\mdosh}{m_{\textrm{dos},\h}}
+
+\newcommand{\Tiv}{T_{\textrm{iv}}}
+\newcommand{\Tc}{T_{\textrm{c}}}
+
+\newcommand{\mut}{\mu_{\textrm{t}}}
+\newcommand{\mul}{\mu_{\textrm{l}}}
+
+%conditional compilation
+\newcommand*{\notFORPAPER}{}%
+
+\DeclareSIUnit\e{\ensuremath{\mathnormal{e}}}
+\DeclareSIUnit\ext{\ensuremath{\mathrm{ext}}}
+\DeclareSIUnit\pro{\ensuremath{\mathnormal{p}}}
+\DeclareSIUnit\c{\ensuremath{\mathnormal{c}}}
+\DeclareSIUnit\sample{\ensuremath{\mathrm{S}}}
+\DeclareSIUnit\bunch{\ensuremath{\mathrm{bunch}}}
+\DeclareSIUnit\ppb{\ensuremath{\mathrm{ppb}}}
+\DeclareSIUnit\eh{\ensuremath{\mathrm{eh}}}
+\DeclareSIUnit\pair{\ensuremath{\mathrm{pair}}}
+\DeclareSIUnit\pairs{\ensuremath{\mathrm{pairs}}}
+\DeclareSIUnit\muon{\ensuremath{\mu}}
+\DeclareSIUnit\ADC{\ensuremath{\mathrm{ADC}}}
+
+
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{center}
+  \vspace*{10mm}
+  {\textbf{\huge\sffamily\@title}\par}
+  \vspace{5mm}
+   
+  \large \@author 
+  \vspace{5mm}
+  \@date
+\end{center}\egroup
+}
+\def\@xfootnote[#1]{%
+  \protected@xdef\@thefnmark{#1}%
+  \@footnotemark\@footnotetext}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+%begin document
+\begin{document}
+
+
+\title{Modelling transient current measurements in single-crystal chemical vapour deposition diamond {\color{red}(A1)}}
+%\title{Modelling temperature- and electric field-dependent transient current measurements in single-crystal chemical-vapour-deposition diamond}
+%\title{Modelling temperature- and electric field-dependent time-of-flight measurements of electrons and holes in single-crystal CVD diamond}
+\author{
+ R.~Sauer${}^{\textrm{a,}}$\footnote[*]{rolf.sauer@uni-ulm.de},
+H.~Jansen${}^{\textrm{b,}}$\footnote[\dag]{hendrik.jansen@desy.de}\\
+%FIXME Wermes, Pernegger
+\vspace{5mm}
+${}^{\textrm{a}}$ Institut f\"ur Quantenmaterie/Halbleiterphysik, Ulm, Germany\\
+${}^{\textrm{b}}$ Deutsches Elektronen-Synchrotron, Hamburg, Germany\\
+}
+\date{\today}
+\maketitle
+\tableofcontents
+
+%\newpage
+\linenumbers
+\begin{abstract}
+\noindent
+
+Temperature- and electric field-dependent transient current experiments were reported recently and were used to extract drift mobilities and drift velocities of electrons and holes in commercially
+ available single-crystal CVD diamonds. 
+These data, available from room temperature down to 2\,K, show characteristic temperature-dependent current profiles and
+  hint to an intermediate charge carrier storage process that has yet not been explained in detail. 
+Here we present largely enriched experimental data and explain all observed phenomena by a detailed physical model. 
+It is based on coupled rate equations and demonstrates the storage process to consist in the formation of free excitons (FE) and electron-hole droplets (EHD)
+ prior to thermal activation and dissociation at increasing temperatures yielding the measured currents. 
+The model describes all experimental findings satisfactorily, some of them quantitatively including the activation energy of 130\,meV
+ and the temperature dependence of the total charge reaching the electrodes after drifting across the crystal. 
+Maxima in the electron transit time versus temperature observed to become successively more prominent at low electric fields are also well understood in the frame of the model. 
+They are ascribed to a valley re-population effect due to impurity-assisted inter-valley scattering.
+
+
+\end{abstract}
+
+%\tableofcontents
+
+
+\part{Experimental data}
+
+%\begin{multicols}{2}
+\section{Introduction}
+\label{sec:intro}
+\ifdefined\notFORPAPER
+\input{content/intro}
+\else
+\input{intro}
+\fi 
+
+\section{Experimental technique}
+\label{sec:ET}
+\ifdefined\notFORPAPER
+\input{content/exp}
+\else
+\input{exp}
+\fi
+
+
+
+\section{Results}
+\label{sec:InducedPulses}
+\ifdefined\notFORPAPER
+\input{content/results}
+\else
+\input{results}
+\fi
+
+%\newpage
+\part{Modelling the experimental data}
+
+\section{Discussion}
+\label{sec:discussion}
+\ifdefined\notFORPAPER
+\input{content/discussion}
+\else
+\input{discussion}
+\fi
+
+\section{Conclusion}
+\label{sec:conclusion}
+\ifdefined\notFORPAPER
+\input{content/conclusion}
+\else
+\input{conclusion}
+\fi
+
+\section*{Acknowledgment}
+The authors would like to thank the CERN Cryo group for their support. 
+
+
+\small
+\bibliographystyle{unsrt}
+\bibliography{/home/hjansen/bibtex/refss}
+
+%\end{multicols}
+
+% \begin{figure}
+%  \centering
+%  \includegraphics[width=0.49\textwidth]{figures/TCTholes500.eps}
+%  \includegraphics[width=0.49\textwidth]{figures/TCTelecs500.eps}
+%  \includegraphics[width=0.49\textwidth]{figures/TCTholes100.eps}
+%  \includegraphics[width=0.49\textwidth]{figures/TCTelecs100.eps}
+% 
+%  \caption{Averaged current pulses for holes \textbf{(left column)} and electrons \textbf{(right column)} at various temperatures for
+%  $U_{\textrm{bias}} = \pm\SI{500}{\volt}$ \textbf{(top row)} and $U_{\textrm{bias}} = \pm\SI{100}{\volt}$ \textbf{(bottom row)} are shown for \textit{S57}.
+%  The pulses for $\SI{2}{\kelvin}$ and $\SI{50}{\kelvin}$ overlap almost completely for both electron and holes. 
+%  Note as well the similarity of electron pulses at $\SI{150}{\kelvin}$ and $\SI{295}{\kelvin}$. 
+%  Pulses from \textit{S52} and \textit{S79} are very similar and hence omitted.}
+%  \label{fig:holepulses}
+% \end{figure}
+
+%\section{Introduction}
+%\label{sec:intro}
+%\include{content/intro}
+\newpage
+\normalsize
+\part{Anmerkungen und neuer Loesungsansatz}
+
+\section{Anmerkungen}
+\input{content/anmerkungen}
+
+
+
+\newpage
+\section{Neuer Loesungsansatz zu Ihrem DGL-System}
+\input{content/neueransatz}
+
+
+% \newpage
+% \section*{Content flow}
+% \begin{itemize}
+%  \item Abstract
+%  \item Introduction
+%  
+%  We discuss previously reported data under new aspects including an excitonic model describing the temperature and electric field dependence of the measured transients. 
+%  
+%  \item Experimental Technique: 
+%  \subitem a) Time-of-flight (ToF/TCT) \subitem b) Samples \subitem c) Set-up \subitem d) Data taking. 
+%  
+%  \item Induced pulses from carrier movement: Hier werden die Strommessungen fuer verschiedene Temperaturen und Spannungen gezeigt
+%  
+%  \begin{figure}[ht]
+%   \centering
+%    \includegraphics[width=0.49\textwidth]{figures/current1.eps}
+%   \caption{}
+%  \end{figure}
+%  
+%  - Initial hot cloud with free electrons and holes, drift in electric field
+%  
+%  - See clear effect between 50\,K and 150\,K
+%  
+%  - could have something to do with excitons because ...
+%  
+%  \newpage
+%  \item Derived data: 
+%  \subitem a) Extraction methods of derived data points
+%  
+%  \begin{figure}[!ht]
+%   \centering
+%    \includegraphics[width=0.4\textwidth]{figures/current2.eps}
+%    \includegraphics[width=0.4\textwidth]{figures/current3.eps}
+%    \includegraphics[width=0.4\textwidth]{figures/current4.eps}
+%    \includegraphics[width=0.4\textwidth]{figures/current5.eps}
+%   \caption{}
+%  \end{figure}
+%  
+%   \subitem b) Folgende Plots koennten entweder hier -- ohne -- und/oder spaeter mit Modell-anpassungen gezeigt werden: $Q$ vs $T$ UND ($\ln(\tau)$ vs $1/T$ oder $\tau$ vs $T$)
+%  
+%   \begin{figure}[!hb]
+%   \centering
+%    \includegraphics[width=0.49\textwidth]{figures/current6.eps}\\oder\\
+%    \includegraphics[width=0.40\textwidth]{figures/current7.eps} 
+%    \includegraphics[width=0.40\textwidth]{figures/current8.eps}
+%   \caption{}
+%  \end{figure}
+%  
+%  \clearpage
+%  
+%  \subitem c) Daraus resultiert: $\Ea$ vs $E$ (extrahiert aus Q(T) und tau(T) bzw. ln$\tau(1/T)$)
+%  
+%  \begin{figure}[ht]
+%   \centering
+%    \includegraphics[width=0.49\textwidth]{figures/current9.eps}
+%   \caption{}
+%  \end{figure}
+%  
+%  
+%  \subitem d) Ladung gegen Feld: $Q$ vs $E$
+%  
+%  \begin{figure}[ht]
+%   \centering
+%    \includegraphics[width=0.49\textwidth]{figures/current10.eps}
+%   \caption{}
+%  \end{figure}
+%  
+%   
+%  \subitem e) Elektronen Repopulation: $\taudrift$ vs $T$
+%  
+%  \begin{figure}[ht]
+%   \centering
+%    \includegraphics[width=0.49\textwidth]{figures/current11.eps}
+%   \caption{}
+%  \end{figure}
+%  
+%  \item Discussion
+%  
+%  \subitem Introduction to the model, three phases
+%  
+%  \subitem Differential equation, solution
+%  
+%  \subitem Comparison of model with data
+%  
+%  \subitem Re-population effect, Comparison of model with data
+%   
+%  \item Conclusion
+%   
+% \end{itemize}
+
+
+\end{document}
+
